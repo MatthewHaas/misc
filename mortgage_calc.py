@@ -26,7 +26,7 @@ def apply_payment():
 	principle = principle - principle_payment
 	return principle
 	
-amoritization = {}
+amortization = {}
 #count = 0
 payment = calc_mortgage()
 while principle > 0:
@@ -36,12 +36,12 @@ while principle > 0:
 				principle_payment = calc_princ_payment()
 				principle = apply_payment()
 				x = month + str(year)
-				amoritization[x] = round(float(principle),2)
+				amortization[x] = round(float(principle),2)
 				print(month + " " + str(year) + " " + str(round(principle,2)))
 			elif principle < payment:
 				principle = 0
 				x = month + str(year)
-				amoritization[x] = round(float(principle),2)
+				amortization[x] = round(float(principle),2)
 				print(month + " " + str(year) + " " + str(principle))
 				break
-print(amoritization)
+print(amortization)
