@@ -12,7 +12,7 @@ body {font-family: "Times New Roman"}
 4. length of kernel
 5. width of kernel
 6. asymmetry coefficient
-7. length of kernel grove
+7. length of kernel groove
 
 <h5>Three varieties of wheat were used:</h5>
 1. Kama
@@ -23,7 +23,9 @@ body {font-family: "Times New Roman"}
 
 ### Load the R packages that we will use in this lab
 ```{r}
+library(data.table)
 library(ggplot2)
+library(GGally)
 ```
 
 ### Set your working directory to where you would like to work
@@ -40,7 +42,38 @@ If you are working in Rstudio, you can also change your directory by going to th
 x <- read.table("seeds_dataset.txt")
 ```
 
+Convert from a data frame to data.table because it is easier to work with.
+```{r}
+x <- as.data.table(x)
+```
+
+Assign meaningful names to each column since they weren't in the origina data file.
+```{r}
+names(x) <- c("area", "perimeter", "compactness", "kernel.length", "kernel.width", 
+"asymmetry.coef", "groove.length", "cultivar")
+```
+
+Change the cultivar ID from numbers to cultivar names to make it easier to understand.
+```{r}
+x[, cultivar := sub(1, "Kama", cultivar)]
+x[, cultivar := sub(2, "Rosa", cultivar)]
+x[, cultivar := sub(3, "Canadian", cultivar)]
+```
+
 We can use the ```dim()``` function to check the dimensions of our dataset. There are 210 observations (rows) which matches our expectation of 70 observations of 3 wheat varieties. The reason there are 8 columns instead of 7 is because the 8th column identifies the wheat variety.
 ```{r}
 dim(x)
+```
+
+We can also get a summary of the distribution of our data using the ```summary()``` function.
+```{r}
+summary(x)
+```
+
+Continue to examine the data.
+```{r}
+ggpairs(x,
+        columns = 1:4, aes(color=cultivar, alpha=0.5),
+        axisLabels = 'none', switch = 'both') +
+        theme_bw()
 ```
