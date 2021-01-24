@@ -1,0 +1,46 @@
+<style>
+body {font-family: "Times New Roman"}
+</style>
+
+<center><h1>Machine Learning Lab</h1></center>
+<center><h2>Spring 2021</h2></center>
+
+<h5>In this lab, we will be working with a wheat seed dataset compiled by a research group in Lublin, Poland. The dataset contains seven attributes:</h5>
+1. area 
+2. perimeter 
+3. compactness
+4. length of kernel
+5. width of kernel
+6. asymmetry coefficient
+7. length of kernel grove
+
+<h5>Three varieties of wheat were used:</h5>
+1. Kama
+2. Rosa
+3. Canadian
+
+<h5>The dataset contains 70 randomly selected observations from each wheat variety.</h5>
+
+### Load the R packages that we will use in this lab
+```{r}
+library(ggplot2)
+```
+
+### Set your working directory to where you would like to work
+This should be where you have saved the data.
+
+```{r}
+setwd("~/Documents/wild_rice") # Change the path to reflect the location of the data on your machine.
+```
+
+If you are working in Rstudio, you can also change your directory by going to the ```Session``` drop-down menu and selecting "Set Working Directory"
+
+### Read in the data
+```{r}
+x <- read.table("seeds_dataset.txt")
+```
+
+We can use the ```dim()``` function to check the dimensions of our dataset. There are 210 observations (rows) which matches our expectation of 70 observations of 3 wheat varieties. The reason there are 8 columns instead of 7 is because the 8th column identifies the wheat variety.
+```{r}
+dim(x)
+```
