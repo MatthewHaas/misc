@@ -3,3 +3,5 @@ This analysis is part of the Google Data Analytics certificate program from Cour
 
 ## Steps
 1. The data are real and come from the company Motivate International, Inc. that operates the city of Chicago's bike-share service Divvy. The license agreement can be found [here](https://www.divvybikes.com/data-license-agreement). I downloaded the data to my personal computer for the purpose of this analysis. The data were concatenated into a single file by individually importing them into R, performing the concatenation, and then saving to a new file using the script [concatenate_data.R](concatenate_data.R).
+
+2. I cleaned the data with the script [clean_data.R](clean_data.R). The two basic steps were to remove duplicates and split the ```started_at``` and ```ended_at``` columns into ```start_date```, ```start_time```, ```end_date```, and ```end_time``` to make future analysis easier. It might also be a good idea to split these columns further into year, month, and day columns. It might take some effort to figure out which day of the week (Sunday, Monday, Tuesday, etc) each of these days corresponds to, but it could provide useful knowledge.
